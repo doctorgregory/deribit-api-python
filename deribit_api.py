@@ -112,11 +112,15 @@ class RestClient(object):
         return self.request("/api/v1/private/account", {})
 
 
-    def buy(self, instrument, quantity, price, postOnly=None, label=None):
+    def buy(self, quantity, price,  postOnly=None, label=None):
         options = {
-            "instrument": instrument,
+            "instrument": "BTC_PERPETUAL",
+            "type": "stop_market",
             "quantity": quantity,
-            "price": price
+            "price": "",
+            "stopPx": price,
+            "time_in_force": "good_till_cancel",
+            "execInst": "mark_price"
         }
   
         if label:
@@ -128,11 +132,15 @@ class RestClient(object):
         return self.request("/api/v1/private/buy", options)
 
 
-    def sell(self, instrument, quantity, price, postOnly=None, label=None):
+    def sell(self, quantity, price, postOnly=None, label=None):
         options = {
-            "instrument": instrument,
+            "instrument": "BTC_PERPETUAL",
+            "type": "stop_market",
             "quantity": quantity,
-            "price": price
+            "price": "",
+            "stopPx": price,
+            "time_in_force": "good_till_cancel",
+            "execInst": "mark_price"
         }
 
         if label:
