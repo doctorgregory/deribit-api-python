@@ -180,6 +180,7 @@ class RestClient(object):
             options["instrument"] = instrument 
         if orderId:
             options["orderId"] = orderId
+        options["type"] = "any"
 
         return self.request("/api/v1/private/getopenorders", options)
 
