@@ -114,7 +114,7 @@ class RestClient(object):
 
     def buy(self, quantity, price,  postOnly=None, label=None):
         options = {
-            "instrument": "BTC_PERPETUAL",
+            "instrument": "BTC-PERPETUAL",
             "type": "stop_market",
             "quantity": quantity,
             "price": "",
@@ -134,7 +134,7 @@ class RestClient(object):
 
     def sell(self, quantity, price, postOnly=None, label=None):
         options = {
-            "instrument": "BTC_PERPETUAL",
+            "instrument": "BTC-PERPETUAL",
             "type": "stop_market",
             "quantity": quantity,
             "price": "",
@@ -167,7 +167,7 @@ class RestClient(object):
         options = {
             "orderId": orderId,
             "quantity": quantity,
-            "price": price
+            "stopPx": price
         }
 
         return self.request("/api/v1/private/edit", options)
